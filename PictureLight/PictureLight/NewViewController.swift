@@ -24,8 +24,6 @@ class NewViewController: UIViewController,UICollectionViewDataSource,UICollectio
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
         /*取得Tag所有圖片*/
         let manager = NSFileManager.defaultManager()
         let urlForDocument = manager.URLsForDirectory( NSSearchPathDirectory.DocumentDirectory, inDomains:NSSearchPathDomainMask.UserDomainMask)
@@ -39,8 +37,11 @@ class NewViewController: UIViewController,UICollectionViewDataSource,UICollectio
         
         for(var i=0;i<tagItem.count;i++)
         {
-            tableData.append(tagItem[i])
-            tableImages.append(tagItem[i])
+            if(tagItem[i] != ".DS_Store")
+            {
+                tableData.append(tagItem[i])
+                tableImages.append(tagItem[i])
+            }
         }
         
         /*取得Tag所有圖片*/

@@ -20,27 +20,23 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
         
         let manager = NSFileManager.defaultManager()
         let urlForDocument = manager.URLsForDirectory( NSSearchPathDirectory.DocumentDirectory, inDomains:NSSearchPathDomainMask.UserDomainMask)
         let url = urlForDocument[0] as NSURL
         
         let contentsOfPath = try? manager.contentsOfDirectoryAtPath(url.path!+"/PictureLightFile/Tag/")
-        //contentsOfPath：Optional([fold1, test1.txt])
+        
         print("contentsOfPath: \(url.path!)/PictureLightFile/Tag/\(contentsOfPath)")
         var tagItem : [String] = contentsOfPath!
         
         for(var i=0;i<tagItem.count;i++)
         {
+            if(tagItem[i] != ".DS_Store")
+            {
             self.objects.addObject(tagItem[i])
+            }
         }
-        
-        
-        //self.objects.addObject("素材")
-        //self.objects.addObject("螢幕截圖")
-        //self.objects.addObject("星星")
         
         self.tableView.reloadData()
     }
@@ -82,10 +78,7 @@ class ViewController: UIViewController {
         
     }
     
-    //點選cell後會呼叫此function告知哪個cell已經被選擇(0開始)
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        
         self.performSegueWithIdentifier("showView", sender: self)
     }
     
