@@ -14,28 +14,67 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     var titleString:String = ""
-    var urlString:String = ""
+    var tagString:String = ""
+    var allPic :[String] = []
+    var photoindex : Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text = titleString
+        
+        LoadImageView(photoindex)
+        print(photoindex)
+        
+    }
+
     
+    func LoadImageView(index:Int) ->Void
+    {
+        let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+        let fileURL = documentsURL.URLByAppendingPathComponent("PictureLightFile/Tag/"+tagString + "/" + allPic[index] )
         //定義NSURL
-        let url = NSURL(string: urlString)
+        let url = NSURL(string: String (fileURL) )
         //取得資料
         let data = NSData(contentsOfURL: url!)
         //初始圖片並加入
         imageView.image = UIImage(data: data!)
         //
-       
-        // Do any additional setup after loading the view.
+        titleLabel.text = allPic[index]
+        
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    //圖片向右
+    func changePhotoRight()->Void
+    {
+        if(photoindex + 1 <= allPic.count - 1)
+        {
+            LoadImageView(++photoindex)
+            
+            print(photoindex)
+        }
+      
+    }
+    //圖片向左
+    func changePhotoLeft()->Void
+    {
+        
+        if(photoindex - 1  >= 0)
+        {
+            LoadImageView(--photoindex)
+            print(photoindex)
+        }
+    }
+    
+    @IBAction func nextBtn(sender: AnyObject) {
+        changePhotoRight()
+    }
+    
+    @IBAction func prevBtn(sender: AnyObject) {
+        changePhotoLeft()
+    }
     /*
     // MARK: - Navigation
 

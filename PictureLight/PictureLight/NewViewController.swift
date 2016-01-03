@@ -19,8 +19,8 @@ class NewViewController: UIViewController,UICollectionViewDataSource,UICollectio
     var tableImages:[String] = []
     
     var selectedFileName :String = ""
-    var selectedFileURL :String = ""
-    
+    var selectedFileTag :String = ""
+    var selectedFileIndex :Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -92,11 +92,8 @@ class NewViewController: UIViewController,UICollectionViewDataSource,UICollectio
         
         /*傳遞圖片address*/
         
-        let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
-        let fileURL = documentsURL.URLByAppendingPathComponent("PictureLightFile/Tag/"+titleString + "/" + tableData[indexPath.row])
-        
-        selectedFileURL  = String(fileURL)
-        
+        selectedFileTag  = titleString
+        selectedFileIndex = indexPath.row
         self.performSegueWithIdentifier("DetailShow", sender: self)
         
         
@@ -110,7 +107,9 @@ class NewViewController: UIViewController,UICollectionViewDataSource,UICollectio
             let viewController = segue.destinationViewController as! DetailViewController
             // your new view controller should have property that will store passed value
             viewController.titleString = selectedFileName
-            viewController.urlString = selectedFileURL
+            viewController.tagString = selectedFileTag
+            viewController.allPic = tableData
+            viewController.photoindex = selectedFileIndex
             
         }
         
