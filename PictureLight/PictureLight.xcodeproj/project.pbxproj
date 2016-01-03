@@ -16,6 +16,8 @@
 		9526EC1A1C393B30001C78D3 /* PictureLightUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9526EC191C393B30001C78D3 /* PictureLightUITests.swift */; };
 		9526EC281C393D3B001C78D3 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9526EC271C393D3B001C78D3 /* TableViewCell.swift */; };
 		9526EC2A1C3941CD001C78D3 /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9526EC291C3941CD001C78D3 /* NewViewController.swift */; };
+		9526EC2C1C399F49001C78D3 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9526EC2B1C399F49001C78D3 /* CollectionViewCell.swift */; };
+		9526EC2E1C39AB17001C78D3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9526EC2D1C39AB17001C78D3 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		9526EC1B1C393B30001C78D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9526EC271C393D3B001C78D3 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		9526EC291C3941CD001C78D3 /* NewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
+		9526EC2B1C399F49001C78D3 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		9526EC2D1C39AB17001C78D3 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,8 @@
 				9526EC051C393B2F001C78D3 /* Info.plist */,
 				9526EC271C393D3B001C78D3 /* TableViewCell.swift */,
 				9526EC291C3941CD001C78D3 /* NewViewController.swift */,
+				9526EC2B1C399F49001C78D3 /* CollectionViewCell.swift */,
+				9526EC2D1C39AB17001C78D3 /* DetailViewController.swift */,
 			);
 			path = PictureLight;
 			sourceTree = "<group>";
@@ -262,8 +268,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9526EC2C1C399F49001C78D3 /* CollectionViewCell.swift in Sources */,
 				9526EC281C393D3B001C78D3 /* TableViewCell.swift in Sources */,
 				9526EBFC1C393B2F001C78D3 /* ViewController.swift in Sources */,
+				9526EC2E1C39AB17001C78D3 /* DetailViewController.swift in Sources */,
 				9526EBFA1C393B2F001C78D3 /* AppDelegate.swift in Sources */,
 				9526EC2A1C3941CD001C78D3 /* NewViewController.swift in Sources */,
 			);
