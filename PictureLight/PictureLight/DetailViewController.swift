@@ -10,13 +10,23 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    
     @IBOutlet weak var titleLabel: UILabel!
-    
+    @IBOutlet weak var imageView: UIImageView!
     var titleString:String = ""
-    
+    var urlString:String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-       titleLabel.text = titleString
+        titleLabel.text = titleString
+    
+        //定義NSURL
+        let url = NSURL(string: urlString)
+        //取得資料
+        let data = NSData(contentsOfURL: url!)
+        //初始圖片並加入
+        imageView.image = UIImage(data: data!)
+        //
+       
         // Do any additional setup after loading the view.
     }
 
