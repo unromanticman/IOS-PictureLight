@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PictureLight/DetailViewController.swift"
-            timestampString = "473613988.566242"
+            timestampString = "473621776.090023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "changePhotoRight()"
             landmarkType = "5">
          </BreakpointContent>

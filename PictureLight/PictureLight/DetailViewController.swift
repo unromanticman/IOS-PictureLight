@@ -48,13 +48,14 @@ class DetailViewController: UIViewController {
                 imageView.image = nil
                 //動圖
                 let gif = UIImage.gifWithName(String(fileURL))
+               
+                imageView.image = gif
                 
-                let view = UIImageView(image: gif)
-                
-                view.contentMode = .ScaleAspectFit
-                
-                view.frame = imageView.frame
-                imageView.addSubview(view)
+                //add view 修正
+                //let view = UIImageView(image: gif)
+                //view.contentMode = .ScaleAspectFit
+                //view.frame = imageView.bounds
+                //imageView.addSubview(view)
                 
             }
             else
