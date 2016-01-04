@@ -29,16 +29,54 @@ class DetailViewController: UIViewController {
     
     func LoadImageView(index:Int) ->Void
     {
-        let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
-        let fileURL = documentsURL.URLByAppendingPathComponent("PictureLightFile/Tag/"+tagString + "/" + allPic[index] )
-        //定義NSURL
-        let url = NSURL(string: String (fileURL) )
-        //取得資料
-        let data = NSData(contentsOfURL: url!)
-        //初始圖片並加入
-        imageView.image = UIImage(data: data!)
-        //
+        do{
+            //釋放所謂的ARC
+            let subviews = imageView.subviews
+            for subview in subviews{
+                subview.removeFromSuperview()
+            }
+            
+            let CheckGif:String = String(allPic[index]).uppercaseString
+            
+            
+            //取得偽造圖片URL
+            let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+            let fileURL = documentsURL.URLByAppendingPathComponent("PictureLightFile/Tag/"+tagString + "/" + allPic[index] )
+            
+            if(CheckGif.containsString(".GIF"))
+            {
+                imageView.image = nil
+                //動圖
+                let gif = UIImage.gifWithName(String(fileURL))
+                
+                let view = UIImageView(image: gif)
+                
+                view.contentMode = .ScaleAspectFit
+                
+                view.frame = imageView.frame
+                imageView.addSubview(view)
+                
+            }
+            else
+            {
+                
+                //定義NSURL
+                let url = NSURL(string: String (fileURL) )
+                //取得資料
+                let data = NSData(contentsOfURL: url!)
+                //初始圖片並加入
+                imageView.image = UIImage(data: data!)
+                
+            }
+
+        }catch
+        {
+            
+        }
+        
+        
         titleLabel.text = allPic[index]
+        
         
     }
     override func didReceiveMemoryWarning() {
