@@ -1,11 +1,3 @@
-//
-//  XmlDataStruct.swift
-//  PictureLight
-//
-//  Created by um on 2016/1/5.
-//  Copyright © 2016年 um. All rights reserved.
-//
-
 import UIKit
 
 class PictureLightData  {

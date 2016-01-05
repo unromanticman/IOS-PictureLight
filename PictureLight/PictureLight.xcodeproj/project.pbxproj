@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		951FD63F1C3C1C3500627A49 /* XmlDataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951FD63E1C3C1C3500627A49 /* XmlDataStruct.swift */; };
 		9526EBFA1C393B2F001C78D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9526EBF91C393B2F001C78D3 /* AppDelegate.swift */; };
 		9526EBFC1C393B2F001C78D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9526EBFB1C393B2F001C78D3 /* ViewController.swift */; };
 		9526EBFF1C393B2F001C78D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9526EBFD1C393B2F001C78D3 /* Main.storyboard */; };
@@ -19,6 +18,7 @@
 		9526EC2A1C3941CD001C78D3 /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9526EC291C3941CD001C78D3 /* NewViewController.swift */; };
 		9526EC2C1C399F49001C78D3 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9526EC2B1C399F49001C78D3 /* CollectionViewCell.swift */; };
 		9526EC2E1C39AB17001C78D3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9526EC2D1C39AB17001C78D3 /* DetailViewController.swift */; };
+		956E87271C3C2D5A0004F970 /* PictureLightData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956E87261C3C2D5A0004F970 /* PictureLightData.swift */; };
 		95FCBF5C1C3AC2170080CEAC /* SupportGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FCBF5B1C3AC2170080CEAC /* SupportGif.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,7 +40,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		951FD63E1C3C1C3500627A49 /* XmlDataStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XmlDataStruct.swift; sourceTree = "<group>"; };
 		9526EBF61C393B2F001C78D3 /* PictureLight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureLight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9526EBF91C393B2F001C78D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9526EBFB1C393B2F001C78D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +57,7 @@
 		9526EC291C3941CD001C78D3 /* NewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
 		9526EC2B1C399F49001C78D3 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		9526EC2D1C39AB17001C78D3 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		956E87261C3C2D5A0004F970 /* PictureLightData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureLightData.swift; sourceTree = "<group>"; };
 		95FCBF5B1C3AC2170080CEAC /* SupportGif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportGif.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,7 +120,7 @@
 				9526EC2B1C399F49001C78D3 /* CollectionViewCell.swift */,
 				9526EC2D1C39AB17001C78D3 /* DetailViewController.swift */,
 				95FCBF5B1C3AC2170080CEAC /* SupportGif.swift */,
-				951FD63E1C3C1C3500627A49 /* XmlDataStruct.swift */,
+				956E87261C3C2D5A0004F970 /* PictureLightData.swift */,
 			);
 			path = PictureLight;
 			sourceTree = "<group>";
@@ -280,8 +280,8 @@
 				9526EC2E1C39AB17001C78D3 /* DetailViewController.swift in Sources */,
 				9526EBFA1C393B2F001C78D3 /* AppDelegate.swift in Sources */,
 				9526EC2A1C3941CD001C78D3 /* NewViewController.swift in Sources */,
-				951FD63F1C3C1C3500627A49 /* XmlDataStruct.swift in Sources */,
 				95FCBF5C1C3AC2170080CEAC /* SupportGif.swift in Sources */,
+				956E87271C3C2D5A0004F970 /* PictureLightData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController,NSXMLParserDelegate {
+class DetailViewController: UIViewController,NSXMLParserDelegate{
 
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -17,24 +17,25 @@ class DetailViewController: UIViewController,NSXMLParserDelegate {
     var tagString:String = ""
     var allPic :[String] = []
     var photoindex : Int = 0
-    
     /* XML Paser */
-    var parser = NSXMLParser()
-    var element : String? 
+    var parser : NSXMLParser?
+    var element : String?
     var pcLightData : [PictureLightData] = []
     /* XML Paser */
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         LoadImageView(photoindex)
         print(photoindex)
+      
         
         //初始化 Paser
         let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
         let fileURL = documentsURL.URLByAppendingPathComponent("PictureLightFile/Config.xml")
         print(fileURL)
-        if let parser = NSXMLParser(contentsOfURL: fileURL) {
+        
+        
+         if let parser = NSXMLParser(contentsOfURL: fileURL){
             parser.delegate = self
             parser.parse()
         }
@@ -65,7 +66,12 @@ class DetailViewController: UIViewController,NSXMLParserDelegate {
                 let gif = UIImage.gifWithName(String(fileURL))
                
                 imageView.image = gif
-              
+                
+                //add view 修正
+                //let view = UIImageView(image: gif)
+                //view.contentMode = .ScaleAspectFit
+                //view.frame = imageView.bounds
+                //imageView.addSubview(view)
                 
             }
             else
@@ -125,30 +131,35 @@ class DetailViewController: UIViewController,NSXMLParserDelegate {
         changePhotoLeft()
     }
     
+
     func parser(parser: NSXMLParser,
         didStartElement elementName: String,
         namespaceURI namespaceURI: String?,
         qualifiedName qName: String?,
-        attributes attributeDict: [String : String]) {
-        element = elementName
-        
-        if (element == "Information"){
+        attributes attributeDict: [String : String])
+    {
+            element = elementName
+            
     
-            let xmlTag = attributeDict ["Tag"] as? NSString
-            let xmlFileName = attributeDict ["FileName"] as? NSString
-            let xmlFileContent = attributeDict ["FileContent"] as? NSString
-            
+        if (element == "Information"){
+        
+    
+        let xmlTag = attributeDict ["Tag"] as? NSString
+        let xmlFileName = attributeDict ["FileName"] as? NSString
+        let xmlFileContent = attributeDict ["FileContent"] as? NSString
+        
+        if(tagString == xmlTag){
+        
             let newItem : PictureLightData  = PictureLightData(t: String(xmlTag) , fn: String(xmlFileName), fc:String(xmlFileContent))
-          
-            pcLightData.append(newItem)
-            
-            print(pcLightData[0].getFileContent())
-            print(pcLightData[0].getFileName())
-            print(pcLightData[0].getTag())
-           
+        
+                pcLightData.append(newItem)
+        
+                print(pcLightData[0].getFileContent())
+                print(pcLightData[0].getFileName())
+                print(pcLightData[0].getTag())
+            }
         }
     }
-
     /*
     // MARK: - Navigation
 
