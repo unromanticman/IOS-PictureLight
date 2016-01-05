@@ -19,7 +19,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="BeH-ni-Pre" customClass="TableViewCell" customModule="PictureLight" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="92" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BeH-ni-Pre" id="HeN-6I-JMP">
                                             <rect key="frame" x="0.0" y="0.0" width="682" height="43.5"/>
@@ -169,12 +169,27 @@
                                     <action selector="prevBtn:" destination="Q4f-He-b1d" eventType="touchUpInside" id="yRN-eR-aVD"/>
                                 </connections>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="oKd-n8-oPy">
+                                <rect key="frame" x="0.0" y="819" width="768" height="205"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G69-Dr-Fmz">
+                                        <rect key="frame" x="14" y="27" width="740" height="500"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="CDD-ly-BI3"/>
                     <connections>
                         <outlet property="imageView" destination="0ac-oB-6VR" id="lyv-aO-c44"/>
+                        <outlet property="labelContent" destination="G69-Dr-Fmz" id="kSb-Ah-tw0"/>
+                        <outlet property="scrollview" destination="oKd-n8-oPy" id="us7-jM-fNe"/>
                         <outlet property="titleLabel" destination="jF5-F3-vJk" id="rWO-fX-bYo"/>
                     </connections>
                 </viewController>

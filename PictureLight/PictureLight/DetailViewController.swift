@@ -10,9 +10,13 @@ import UIKit
 
 class DetailViewController: UIViewController,NSXMLParserDelegate{
 
+    @IBOutlet weak var scrollview: UIScrollView!
     
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var labelContent: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    
+    
     var titleString:String = ""
     var tagString:String = ""
     var allPic :[String] = []
@@ -25,9 +29,7 @@ class DetailViewController: UIViewController,NSXMLParserDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        LoadImageView(photoindex)
-        print(photoindex)
-      
+   
         
         //初始化 Paser
         let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
@@ -39,7 +41,15 @@ class DetailViewController: UIViewController,NSXMLParserDelegate{
             parser.delegate = self
             parser.parse()
         }
+
+        //載入圖片
+        LoadImageView(photoindex)
+        print(photoindex)
         
+        //labelContent修正位置
+        
+        scrollview.contentSize.height = 900
+     
     }
 
     
@@ -85,7 +95,8 @@ class DetailViewController: UIViewController,NSXMLParserDelegate{
                 imageView.image = UIImage(data: data!)
                 
             }
-
+            
+               labelContent.text = getContent(allPic[index])
         }catch
         {
             
@@ -131,6 +142,26 @@ class DetailViewController: UIViewController,NSXMLParserDelegate{
         changePhotoLeft()
     }
     
+    
+    func getContent(filename:String)->String
+    {
+        //尋找該檔名的內容
+        
+        var content : String = ""
+        
+        
+        for element in pcLightData
+        {
+            if ( element.getFileName() == filename ? true : false ){
+               
+                content = element.getFileContent()
+                break
+                
+            }
+        }
+        
+        return content
+    }
 
     func parser(parser: NSXMLParser,
         didStartElement elementName: String,
@@ -138,28 +169,25 @@ class DetailViewController: UIViewController,NSXMLParserDelegate{
         qualifiedName qName: String?,
         attributes attributeDict: [String : String])
     {
-            element = elementName
+        element = elementName
             
     
         if (element == "Information"){
         
     
-        let xmlTag = attributeDict ["Tag"] as? NSString
-        let xmlFileName = attributeDict ["FileName"] as? NSString
-        let xmlFileContent = attributeDict ["FileContent"] as? NSString
+        let xmlTag = attributeDict ["Tag"] as! NSString
+        let xmlFileName = attributeDict ["FileName"] as! NSString
+        let xmlFileContent = attributeDict ["FileContent"]! as NSString
         
         if(tagString == xmlTag){
         
             let newItem : PictureLightData  = PictureLightData(t: String(xmlTag) , fn: String(xmlFileName), fc:String(xmlFileContent))
-        
                 pcLightData.append(newItem)
-        
-                print(pcLightData[0].getFileContent())
-                print(pcLightData[0].getFileName())
-                print(pcLightData[0].getTag())
+                print(xmlFileName)
             }
         }
     }
+    
     /*
     // MARK: - Navigation
 
