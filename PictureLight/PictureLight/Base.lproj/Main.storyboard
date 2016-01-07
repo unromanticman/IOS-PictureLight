@@ -149,26 +149,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="0ac-oB-6VR">
-                                <rect key="frame" x="5" y="104" width="761" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bzP-1p-E4m">
-                                <rect key="frame" x="523" y="792" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Next"/>
-                                <connections>
-                                    <action selector="nextBtn:" destination="Q4f-He-b1d" eventType="touchUpInside" id="khu-BQ-pdg"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VQL-j8-fVh">
-                                <rect key="frame" x="260" y="792" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Prev"/>
-                                <connections>
-                                    <action selector="prevBtn:" destination="Q4f-He-b1d" eventType="touchUpInside" id="yRN-eR-aVD"/>
-                                </connections>
-                            </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="oKd-n8-oPy">
                                 <rect key="frame" x="0.0" y="819" width="768" height="205"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -182,6 +162,19 @@
                                     </label>
                                 </subviews>
                             </scrollView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Fla-dL-oFm">
+                                <rect key="frame" x="0.0" y="103" width="768" height="687"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="0ac-oB-6VR">
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="687"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <connections>
+                                    <outlet property="delegate" destination="Q4f-He-b1d" id="gZ5-ur-Og7"/>
+                                </connections>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -191,6 +184,7 @@
                         <outlet property="labelContent" destination="G69-Dr-Fmz" id="kSb-Ah-tw0"/>
                         <outlet property="scrollview" destination="oKd-n8-oPy" id="us7-jM-fNe"/>
                         <outlet property="titleLabel" destination="jF5-F3-vJk" id="rWO-fX-bYo"/>
+                        <outlet property="zoomScrollView" destination="Fla-dL-oFm" id="5un-ko-Ok3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zES-sb-2vv" userLabel="First Responder" sceneMemberID="firstResponder"/>

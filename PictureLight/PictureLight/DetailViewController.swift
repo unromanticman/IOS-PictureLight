@@ -8,8 +8,9 @@
 
 import UIKit
 
-class DetailViewController: UIViewController,NSXMLParserDelegate{
+class DetailViewController: UIViewController,NSXMLParserDelegate,UIScrollViewDelegate{
 
+    @IBOutlet weak var zoomScrollView: UIScrollView!
     @IBOutlet weak var scrollview: UIScrollView!
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -28,8 +29,6 @@ class DetailViewController: UIViewController,NSXMLParserDelegate{
     /* XML Paser */
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-   
         
         //初始化 Paser
         let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
@@ -50,8 +49,44 @@ class DetailViewController: UIViewController,NSXMLParserDelegate{
         
         scrollview.contentSize.height = 900
      
+        
+        //初始化ScrollSize
+        
+        self.zoomScrollView.minimumZoomScale = 1.0
+        self.zoomScrollView.maximumZoomScale = 6.0
+        
+        //Touch
+        var leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))
+        var rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))
+      
+        leftSwipe.direction = .Left
+        rightSwipe.direction = .Right
+        
+        zoomScrollView.addGestureRecognizer(leftSwipe)
+        zoomScrollView.addGestureRecognizer(rightSwipe)
+        
     }
+    
+    func handleSwipes(sender:UISwipeGestureRecognizer)
+    {
+        if(zoomScrollView.zoomScale == 1.0)
+        {
+            if(sender.direction == .Left)
+            {
+                changePhotoRight()
+            }
+            if(sender.direction == .Right)
+            {
+                changePhotoLeft()
+            }
 
+        }
+    }
+    
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        
+        return self.imageView
+    }
     
     func LoadImageView(index:Int) ->Void
     {
@@ -77,12 +112,6 @@ class DetailViewController: UIViewController,NSXMLParserDelegate{
                
                 imageView.image = gif
                 
-                //add view 修正
-                //let view = UIImageView(image: gif)
-                //view.contentMode = .ScaleAspectFit
-                //view.frame = imageView.bounds
-                //imageView.addSubview(view)
-                
             }
             else
             {
@@ -105,6 +134,8 @@ class DetailViewController: UIViewController,NSXMLParserDelegate{
         
         titleLabel.text = allPic[index]
         
+        //還原縮放
+        self.zoomScrollView.zoomScale = 1.0
         
     }
     override func didReceiveMemoryWarning() {
@@ -115,6 +146,7 @@ class DetailViewController: UIViewController,NSXMLParserDelegate{
     //圖片向右
     func changePhotoRight()->Void
     {
+        
         if(photoindex + 1 <= allPic.count - 1)
         {
             LoadImageView(++photoindex)
@@ -133,15 +165,7 @@ class DetailViewController: UIViewController,NSXMLParserDelegate{
             print(photoindex)
         }
     }
-    
-    @IBAction func nextBtn(sender: AnyObject) {
-        changePhotoRight()
-    }
-    
-    @IBAction func prevBtn(sender: AnyObject) {
-        changePhotoLeft()
-    }
-    
+ 
     
     func getContent(filename:String)->String
     {
@@ -188,7 +212,9 @@ class DetailViewController: UIViewController,NSXMLParserDelegate{
         }
     }
     
-    /*
+   
+ 
+       /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
