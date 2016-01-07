@@ -11,10 +11,9 @@ import UIKit
 class DetailViewController: UIViewController,NSXMLParserDelegate,UIScrollViewDelegate{
 
     @IBOutlet weak var zoomScrollView: UIScrollView!
-    @IBOutlet weak var scrollview: UIScrollView!
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var labelContent: UILabel!
+    @IBOutlet weak var picTextView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
     
     
@@ -45,10 +44,7 @@ class DetailViewController: UIViewController,NSXMLParserDelegate,UIScrollViewDel
         LoadImageView(photoindex)
         print(photoindex)
         
-        //labelContent修正位置
-        
-        scrollview.contentSize.height = 900
-     
+    
         
         //初始化ScrollSize
         
@@ -125,7 +121,7 @@ class DetailViewController: UIViewController,NSXMLParserDelegate,UIScrollViewDel
                 
             }
             
-               labelContent.text = getContent(allPic[index])
+               picTextView.text = getContent(allPic[index])
         }catch
         {
             
