@@ -35,6 +35,8 @@ class NewViewController: UIViewController,UICollectionViewDataSource,UICollectio
         
         var tagItem : [String] = contentsOfPath!
         
+        tagItem = productSort(tagItem)
+        
         for(var i=0;i<tagItem.count;i++)
         {
             if(tagItem[i] != ".DS_Store")
@@ -43,6 +45,8 @@ class NewViewController: UIViewController,UICollectionViewDataSource,UICollectio
                 tableImages.append(tagItem[i])
             }
         }
+        
+        
         
         /*取得Tag所有圖片*/
         
@@ -78,8 +82,9 @@ class NewViewController: UIViewController,UICollectionViewDataSource,UICollectio
         //取得資料
         let data = NSData(contentsOfURL: url!)
         //初始圖片並加入
-        cell.imgCell.image = UIImage(data: data!)
-        //
+        cell.imgCell.image = scaleToSize(UIImage(data: data!)!
+,size : CGSize(width: 150,height: 150))
+        
         print(tableImages[indexPath.row])
         
         return cell
@@ -114,7 +119,19 @@ class NewViewController: UIViewController,UICollectionViewDataSource,UICollectio
         }
         
     }
-
+    
+    func scaleToSize(img: UIImage, size: CGSize) -> UIImage {
+        // 设置成为当前正在使用的context
+        UIGraphicsBeginImageContext(size)
+        // 绘制改变大小的图片
+        img.drawInRect(CGRectMake(0, 0, size.width, size.height))
+        // 从当前context中创建一个改变大小后的图片
+        var scaledImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        // 使当前的context出堆栈
+        UIGraphicsEndImageContext()
+        // 返回新的改变大小后的图片
+        return scaledImage
+    }
 
     /*
     // MARK: - Navigation

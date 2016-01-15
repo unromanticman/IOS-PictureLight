@@ -19,6 +19,7 @@
 		9526EC2C1C399F49001C78D3 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9526EC2B1C399F49001C78D3 /* CollectionViewCell.swift */; };
 		9526EC2E1C39AB17001C78D3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9526EC2D1C39AB17001C78D3 /* DetailViewController.swift */; };
 		956E87271C3C2D5A0004F970 /* PictureLightData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956E87261C3C2D5A0004F970 /* PictureLightData.swift */; };
+		95F70D7B1C4994130029C3E9 /* SortPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F70D7A1C4994130029C3E9 /* SortPicture.swift */; };
 		95FCBF5C1C3AC2170080CEAC /* SupportGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FCBF5B1C3AC2170080CEAC /* SupportGif.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		9526EC2B1C399F49001C78D3 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		9526EC2D1C39AB17001C78D3 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		956E87261C3C2D5A0004F970 /* PictureLightData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureLightData.swift; sourceTree = "<group>"; };
+		95F70D7A1C4994130029C3E9 /* SortPicture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortPicture.swift; sourceTree = "<group>"; };
 		95FCBF5B1C3AC2170080CEAC /* SupportGif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportGif.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +123,7 @@
 				9526EC2D1C39AB17001C78D3 /* DetailViewController.swift */,
 				95FCBF5B1C3AC2170080CEAC /* SupportGif.swift */,
 				956E87261C3C2D5A0004F970 /* PictureLightData.swift */,
+				95F70D7A1C4994130029C3E9 /* SortPicture.swift */,
 			);
 			path = PictureLight;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				9526EC2A1C3941CD001C78D3 /* NewViewController.swift in Sources */,
 				95FCBF5C1C3AC2170080CEAC /* SupportGif.swift in Sources */,
 				956E87271C3C2D5A0004F970 /* PictureLightData.swift in Sources */,
+				95F70D7B1C4994130029C3E9 /* SortPicture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
