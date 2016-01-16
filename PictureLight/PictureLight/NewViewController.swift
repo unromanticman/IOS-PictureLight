@@ -47,7 +47,6 @@ class NewViewController: UIViewController,UICollectionViewDataSource,UICollectio
         }
         
         
-        
         /*取得Tag所有圖片*/
         
         //設定標題
@@ -60,6 +59,7 @@ class NewViewController: UIViewController,UICollectionViewDataSource,UICollectio
         // Dispose of any resources that can be recreated.
     }
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return tableData.count
         
     }
@@ -67,27 +67,34 @@ class NewViewController: UIViewController,UICollectionViewDataSource,UICollectio
         
         
         let cell:CollectionViewCell =  collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! CollectionViewCell
-        cell.lblCell.text = tableData[indexPath.row]
+        
+        cell.lblCell.text = self.tableData[indexPath.row]
         print(cell.lblCell.text )
         
-        //取得文件
-        let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
-        let fileURL = documentsURL.URLByAppendingPathComponent("PictureLightFile/Tag/"+titleString + "/" + tableData[indexPath.row])
-       
         
-        print(fileURL)
-
-        //定義NSURL
-        let url = NSURL(string: String(fileURL))
-        //取得資料
-        let data = NSData(contentsOfURL: url!)
-        //初始圖片並加入
-        cell.imgCell.image = scaleToSize(UIImage(data: data!)!
-,size : CGSize(width: 150,height: 150))
-        
-        print(tableImages[indexPath.row])
+        //多線程但全在UI做原因是Load異步會造成圖片順序錯誤,目前這樣記憶體MAX約10MB
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            
+            //取得文件
+            let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+            let fileURL = documentsURL.URLByAppendingPathComponent("PictureLightFile/Tag/"+self.titleString + "/" + self.tableData[indexPath.row])
+            print(fileURL)
+            
+            //定義NSURL
+            let url = NSURL(string: String(fileURL))
+            //取得資料
+            let data = NSData(contentsOfURL: url!)
+            //初始圖片並加入
+            
+            cell.imgCell.image = self.scaleToSize(UIImage(data: data!)!
+                ,size : CGSize(width: 150,height: 150))
+            
+            print(self.tableImages[indexPath.row])
+            
+        })
         
         return cell
+        
     }
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
