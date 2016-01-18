@@ -10,10 +10,10 @@ import UIKit
 
 class NewViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
 
-    @IBOutlet weak var titleLabel: UILabel!
     
     var titleString :String!
     
+    @IBOutlet weak var countItem: UIBarButtonItem!
     
     var tableData:[String] = []
     var tableImages:[String] = []
@@ -23,7 +23,7 @@ class NewViewController: UIViewController,UICollectionViewDataSource,UICollectio
     var selectedFileIndex :Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = titleString
         /*取得Tag所有圖片*/
         let manager = NSFileManager.defaultManager()
         let urlForDocument = manager.URLsForDirectory( NSSearchPathDirectory.DocumentDirectory, inDomains:NSSearchPathDomainMask.UserDomainMask)
@@ -48,9 +48,7 @@ class NewViewController: UIViewController,UICollectionViewDataSource,UICollectio
         
         
         /*取得Tag所有圖片*/
-        
-        //設定標題
-        self.titleLabel.text = titleString + "   Count:" + String(tagItem.count)
+        countItem.title = "Count:" + String(tagItem.count)
         
     }
 

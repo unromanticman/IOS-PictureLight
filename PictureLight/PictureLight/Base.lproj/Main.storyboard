@@ -19,7 +19,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="BeH-ni-Pre" customClass="TableViewCell" customModule="PictureLight" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="92" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BeH-ni-Pre" id="HeN-6I-JMP">
                                             <rect key="frame" x="0.0" y="0.0" width="682" height="43.5"/>
@@ -47,8 +47,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="q91-QS-g9u"/>
+                    <navigationItem key="navigationItem" id="q91-QS-g9u">
+                        <barButtonItem key="rightBarButtonItem" title="ReadMe" id="XQG-N7-dZa">
+                            <connections>
+                                <action selector="AboutBtn:" destination="BYZ-38-t0r" id="Rus-9e-C9N"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="aboutBtn" destination="XQG-N7-dZa" id="KLR-oz-4XP"/>
                         <outlet property="tableView" destination="dfS-c5-kwn" id="NJr-9u-b4i"/>
                         <segue destination="yiR-x9-SAN" kind="push" identifier="showView" id="Ecu-7Q-tXx"/>
                     </connections>
@@ -66,7 +73,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" dataMode="prototypes" id="75P-FP-LZT">
-                                <rect key="frame" x="29" y="138" width="710" height="866"/>
+                                <rect key="frame" x="29" y="74" width="710" height="930"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="a8d-Kj-aGf">
@@ -108,19 +115,14 @@
                                     <outlet property="delegate" destination="yiR-x9-SAN" id="lQp-sd-5gV"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uve-PE-8i5">
-                                <rect key="frame" x="141" y="69" width="486" height="61"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="nZv-y3-1vD"/>
+                    <navigationItem key="navigationItem" id="nZv-y3-1vD">
+                        <barButtonItem key="rightBarButtonItem" id="wE2-mR-NUh"/>
+                    </navigationItem>
                     <connections>
-                        <outlet property="titleLabel" destination="uve-PE-8i5" id="HvI-5P-XRC"/>
+                        <outlet property="countItem" destination="wE2-mR-NUh" id="4Dn-Tj-kQT"/>
                         <segue destination="Q4f-He-b1d" kind="push" identifier="DetailShow" id="5Ks-f8-j2f"/>
                     </connections>
                 </viewController>

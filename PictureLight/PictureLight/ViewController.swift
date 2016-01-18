@@ -10,35 +10,42 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    
-  
     @IBOutlet weak var tableView: UITableView!
   
+    @IBOutlet weak var aboutBtn: UIBarButtonItem!
+    
     var objects: NSMutableArray! = NSMutableArray()
     
-  
-    
+    @IBAction func AboutBtn(sender: AnyObject) {
+        let url = NSURL(string: "https://github.com/unromanticman/Picture-Light-ReadMe")!
+        UIApplication.sharedApplication().openURL(url)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let manager = NSFileManager.defaultManager()
-        let urlForDocument = manager.URLsForDirectory( NSSearchPathDirectory.DocumentDirectory, inDomains:NSSearchPathDomainMask.UserDomainMask)
-        let url = urlForDocument[0] as NSURL
-        
-        let contentsOfPath = try? manager.contentsOfDirectoryAtPath(url.path!+"/PictureLightFile/Tag/")
-        
-        print("contentsOfPath: \(url.path!)/PictureLightFile/Tag/\(contentsOfPath)")
-        var tagItem : [String] = contentsOfPath!
-        
-        for(var i=0;i<tagItem.count;i++)
-        {
-            if(tagItem[i] != ".DS_Store")
-            {
-            self.objects.addObject(tagItem[i])
+            self.title = "Picture Light"
+            let manager = NSFileManager.defaultManager()
+            let urlForDocument = manager.URLsForDirectory( NSSearchPathDirectory.DocumentDirectory, inDomains:NSSearchPathDomainMask.UserDomainMask)
+            let url = urlForDocument[0] as NSURL
+            
+            if let test = try?(manager.contentsOfDirectoryAtPath(url.path!+"/PictureLightFile/Tag/")) {
+                print("Have file")
+                let contentsOfPath = try? manager.contentsOfDirectoryAtPath(url.path!+"/PictureLightFile/Tag/")
+                
+                print("contentsOfPath: \(url.path!)/PictureLightFile/Tag/\(contentsOfPath)")
+                var tagItem : [String] = contentsOfPath!
+                
+                for(var i=0;i<tagItem.count;i++)
+                {
+                    if(tagItem[i] != ".DS_Store")
+                    {
+                        self.objects.addObject(tagItem[i])
+                    }
+                }
+                self.tableView.reloadData()
             }
-        }
-        
-        self.tableView.reloadData()
+            else{
+                print("Does't have file")
+            }
     }
     
 
