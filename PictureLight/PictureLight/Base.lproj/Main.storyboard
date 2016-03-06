@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -19,7 +20,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="BeH-ni-Pre" customClass="TableViewCell" customModule="PictureLight" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BeH-ni-Pre" id="HeN-6I-JMP">
                                             <rect key="frame" x="0.0" y="0.0" width="682" height="43.5"/>
@@ -48,7 +49,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="q91-QS-g9u">
-                        <barButtonItem key="rightBarButtonItem" title="ReadMe" id="XQG-N7-dZa">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="XQG-N7-dZa">
                             <connections>
                                 <action selector="AboutBtn:" destination="BYZ-38-t0r" id="Rus-9e-C9N"/>
                             </connections>
@@ -84,7 +85,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="z4A-x8-gG3" customClass="CollectionViewCell" customModule="PictureLight" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="64" width="195" height="203"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="195" height="203"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="195" height="203"/>
@@ -169,8 +170,31 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="CDD-ly-BI3"/>
+                    <navigationItem key="navigationItem" id="CDD-ly-BI3">
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" id="5k7-Tf-652">
+                                <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="ga3-Xd-CS8">
+                                    <rect key="frame" x="698" y="7" width="50" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                </textField>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="0qZ-8F-qg0">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pQi-XJ-PUH">
+                                    <rect key="frame" x="640" y="7" width="50" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Auto"/>
+                                    <connections>
+                                        <action selector="autoBtn:" destination="Q4f-He-b1d" eventType="touchUpInside" id="Tja-B6-7h1"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
+                        <outlet property="autoBtn" destination="pQi-XJ-PUH" id="4zb-Lg-f0y"/>
+                        <outlet property="autoTime" destination="5k7-Tf-652" id="rnR-rg-78R"/>
                         <outlet property="imageView" destination="0ac-oB-6VR" id="lyv-aO-c44"/>
                         <outlet property="picTextView" destination="Yqv-2g-B5B" id="fum-Kf-xPr"/>
                         <outlet property="titleLabel" destination="jF5-F3-vJk" id="rWO-fX-bYo"/>

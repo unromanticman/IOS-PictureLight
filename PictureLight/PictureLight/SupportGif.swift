@@ -19,6 +19,23 @@ extension UIImage {
         return UIImage.animatedImageWithSource(source)
     }
     
+    public class func gifWithURL(gifUrl:String) -> UIImage? {
+        // Validate URL
+        guard let bundleURL:NSURL? = NSURL(string: gifUrl)
+            else {
+                print("SwiftGif: This image named \"\(gifUrl)\" does not exist")
+                return nil
+        }
+        
+        // Validate data
+        guard let imageData = NSData(contentsOfURL: bundleURL!) else {
+            print("SwiftGif: Cannot turn image named \"\(gifUrl)\" into NSData")
+            return nil
+        }
+        
+        return gifWithData(imageData)
+    }
+
     public class func gifWithName(gifUrl:String) -> UIImage? {
         
         /* let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]

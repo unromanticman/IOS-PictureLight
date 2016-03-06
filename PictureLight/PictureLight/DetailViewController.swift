@@ -11,12 +11,15 @@ import UIKit
 class DetailViewController: UIViewController,NSXMLParserDelegate,UIScrollViewDelegate{
 
     @IBOutlet weak var zoomScrollView: UIScrollView!
-    
+
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var picTextView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
-    
-    
+
+    @IBOutlet weak var autoBtn: UIButton!
+    @IBOutlet weak var autoTime: UIBarButtonItem!
+    var timerflag = false;
+    var autoTimer:NSTimer!
     var titleString:String = ""
     var tagString:String = ""
     var allPic :[String] = []
@@ -149,6 +152,12 @@ class DetailViewController: UIViewController,NSXMLParserDelegate,UIScrollViewDel
             
             print(photoindex)
         }
+        else if(timerflag)
+        {
+            autoTimer.invalidate()
+            autoBtn.setTitle("Auto", forState: .Normal)
+            timerflag = false
+        }
       
     }
     //圖片向左
@@ -189,6 +198,7 @@ class DetailViewController: UIViewController,NSXMLParserDelegate,UIScrollViewDel
         qualifiedName qName: String?,
         attributes attributeDict: [String : String])
     {
+        
         element = elementName
             
     
@@ -206,9 +216,34 @@ class DetailViewController: UIViewController,NSXMLParserDelegate,UIScrollViewDel
                 print(xmlFileName)
             }
         }
+        
+      
     }
     
-   
+    func tickDown()
+    {
+        changePhotoRight()
+    }
+    
+    @IBAction func autoBtn(sender: AnyObject) {
+        if(timerflag == false)
+        {
+            let time :Double = Double((autoTime.customView as! UITextField).text!)!
+            autoTimer = NSTimer.scheduledTimerWithTimeInterval(time,
+                target:self,selector:Selector("tickDown"),
+                userInfo:nil,repeats:true)
+            
+            timerflag = true
+            autoBtn.setTitle("Stop", forState: .Normal)
+        }
+        else
+        {
+            autoTimer.invalidate()
+            autoBtn.setTitle("Auto", forState: .Normal)
+            timerflag = false
+        }
+        
+    }
  
        /*
     // MARK: - Navigation

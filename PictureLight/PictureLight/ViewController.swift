@@ -17,8 +17,72 @@ class ViewController: UIViewController {
     var objects: NSMutableArray! = NSMutableArray()
     
     @IBAction func AboutBtn(sender: AnyObject) {
-        let url = NSURL(string: "https://github.com/unromanticman/Picture-Light-ReadMe")!
-        UIApplication.sharedApplication().openURL(url)
+    
+        if #available(iOS 8.0, *) {
+            let alert = UIAlertController(title: "What to you want to do ?", message: "", preferredStyle:.ActionSheet)
+            let firstAction = UIAlertAction(title: "Watch Read Me", style: .Default) { (alert: UIAlertAction!) -> Void in
+                let url = NSURL(string: "https://github.com/unromanticman/Picture-Light-ReadMe")!
+                UIApplication.sharedApplication().openURL(url)
+            }
+            
+            let secondAction = UIAlertAction(title: "Clean All Picture", style: .Default) { (alert: UIAlertAction!) -> Void in
+            
+                if #available(iOS 8.0, *) {
+                    let alert = UIAlertController(title: "Do you want to clean all pitcure?", message: "", preferredStyle:.ActionSheet)
+                    
+                    let firstAction = UIAlertAction(title: "YES", style: .Default) { (alert: UIAlertAction!) -> Void in
+                        self.cleanallPicture()
+                    }
+                    
+                    let secondAction = UIAlertAction(title: "NO", style: .Default) { (alert: UIAlertAction!) -> Void in
+                   
+                    }
+                    alert.addAction(firstAction)
+                    alert.addAction(secondAction)
+                    alert.popoverPresentationController!.sourceView = self.view
+                    alert.popoverPresentationController!.sourceRect = CGRectMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0, 1.0, 1.0)
+                  
+                    self.presentViewController(alert, animated: true, completion:nil)
+                    
+                } else {
+              
+                }
+                
+            }
+            let thirdAction = UIAlertAction(title: "Cancel", style: .Default) { (alert: UIAlertAction!) -> Void in
+                
+            }
+            alert.addAction(firstAction)
+            alert.addAction(secondAction)
+            alert.addAction(thirdAction)
+            alert.popoverPresentationController!.sourceView = self.view
+            alert.popoverPresentationController!.sourceRect = CGRectMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0, 1.0, 1.0)
+
+            presentViewController(alert, animated: true, completion:nil)
+        } else {
+           
+        }
+              
+
+    }
+    
+    private func cleanallPicture(){
+        //Clean iTunes all files
+        let fileManager = NSFileManager.defaultManager()
+        let myDirectory = NSHomeDirectory() + "/Documents/"
+        let fileArray:[AnyObject]? = fileManager.subpathsAtPath(myDirectory)
+        for fn in fileArray!{
+            do
+            {
+                try! fileManager.removeItemAtPath(myDirectory + "/\(fn)")
+
+            }
+            catch let error as NSError {
+                print("Ooops! Something went wrong: \(error)")
+            }
+        }
+
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
